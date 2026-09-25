@@ -12,6 +12,7 @@
     "fastapi",
     "psycopg",
     "pydantic",
-    "sqlmodel"
+    "sqlmodel",
+    "venv"
   ]
 }
