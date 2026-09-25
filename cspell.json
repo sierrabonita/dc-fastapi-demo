@@ -5,6 +5,7 @@
   "ignorePaths": [
     "node_modules",
     "pnpm-lock.yaml",
+    "uv.lock",
     ".git",
     ".env*"
   ],
@@ -12,6 +13,7 @@
     "fastapi",
     "psycopg",
     "pydantic",
+    "pyproject",
     "sqlmodel",
     "venv"
   ]
