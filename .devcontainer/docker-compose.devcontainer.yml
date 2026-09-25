@@ -1,6 +1,0 @@
-# Dev Containers 用の追加設定。リポジトリ全体を /workspace にマウントする。
-# 相対パスは最初の compose ファイル（リポジトリ直下）を基準に解決されるため "." を指定する。
-services:
-  backend:
-    volumes:
-      - .:/workspace:cached
