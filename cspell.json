@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    "node_modules",
+    "pnpm-lock.yaml",
+    ".git",
+    ".env*"
+  ],
+  "words": [
+    "fastapi",
+    "psycopg",
+    "pydantic",
+    "sqlmodel"
+  ]
+}
