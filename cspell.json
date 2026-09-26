@@ -11,10 +11,14 @@
   ],
   "words": [
     "fastapi",
+    "httpx",
     "psycopg",
     "pydantic",
     "pyproject",
+    "pytest",
+    "pythonpath",
     "sqlmodel",
+    "testpaths",
     "venv"
   ]
 }
