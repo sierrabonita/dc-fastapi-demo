@@ -1,12 +1,22 @@
-from typing import Annotated
+from typing import Annotated, Any
 
 from fastapi import APIRouter, HTTPException, Query, status
+from pydantic import BaseModel
 from sqlmodel import select
 
 from app.core.db import SessionDep
 from app.models.todo import Todo, TodoCreate, TodoPublic, TodoUpdate
 
+
+class ErrorResponse(BaseModel):
+    detail: str
+
+
 router = APIRouter(prefix="/todos", tags=["todos"])
+
+NOT_FOUND_RESPONSE: dict[int | str, dict[str, Any]] = {
+    404: {"model": ErrorResponse, "description": "Todo not found"}
+}
 
 
 @router.post("", response_model=TodoPublic, status_code=status.HTTP_201_CREATED)
@@ -27,7 +37,7 @@ def read_todos(
     return session.exec(select(Todo).offset(offset).limit(limit)).all()
 
 
-@router.get("/{todo_id}", response_model=TodoPublic)
+@router.get("/{todo_id}", response_model=TodoPublic, responses=NOT_FOUND_RESPONSE)
 def read_todo(todo_id: int, session: SessionDep):
     todo = session.get(Todo, todo_id)
     if not todo:
@@ -35,7 +45,7 @@ def read_todo(todo_id: int, session: SessionDep):
     return todo
 
 
-@router.patch("/{todo_id}", response_model=TodoPublic)
+@router.patch("/{todo_id}", response_model=TodoPublic, responses=NOT_FOUND_RESPONSE)
 def update_todo(todo_id: int, todo_in: TodoUpdate, session: SessionDep):
     todo = session.get(Todo, todo_id)
     if not todo:
@@ -47,7 +57,9 @@ def update_todo(todo_id: int, todo_in: TodoUpdate, session: SessionDep):
     return todo
 
 
-@router.delete("/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/{todo_id}", status_code=status.HTTP_204_NO_CONTENT, responses=NOT_FOUND_RESPONSE
+)
 def delete_todo(todo_id: int, session: SessionDep):
     todo = session.get(Todo, todo_id)
     if not todo:
