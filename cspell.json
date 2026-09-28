@@ -10,15 +10,28 @@
     ".env*"
   ],
   "words": [
+    "alembic",
+    "configparser",
+    "datefmt",
     "fastapi",
     "httpx",
+    "levelname",
+    "localtime",
+    "notset",
+    "pathsep",
+    "poolclass",
     "psycopg",
     "pydantic",
     "pyproject",
     "pytest",
     "pythonpath",
+    "qualname",
+    "repr",
+    "sqlalchemy",
     "sqlmodel",
+    "sqltypes",
     "testpaths",
-    "venv"
+    "tzdata",
+    "venv",
   ]
 }
