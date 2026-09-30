@@ -32,6 +32,6 @@
     "sqltypes",
     "testpaths",
     "tzdata",
-    "venv",
+    "venv"
   ]
 }
